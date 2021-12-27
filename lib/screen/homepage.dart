@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constants/app_size_constants.dart';
 import '../constants/app_text_contansts.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,14 +13,37 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppTextContants.appBarTittle),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [],
+          children: [
+            SizedBox(
+              height: deviceSize.height * 0.4,
+              child: Image.asset('assets/images/dice.png'),
+            ),
+            const SizedBox(
+              height: AppSizeConstants.defaultSizedBoxHeight,
+            ),
+            SizedBox(
+              height: deviceSize.height * 0.1,
+              width: deviceSize.width - 50,
+              child: Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    AppTextContants.startButton,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
