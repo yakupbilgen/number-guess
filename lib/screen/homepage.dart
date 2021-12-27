@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
               width: deviceSize.width - 50,
               child: Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, "/gamescreen"),
                   child: const Text(
                     AppTextContants.startButton,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
