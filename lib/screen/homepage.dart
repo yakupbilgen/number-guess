@@ -16,8 +16,9 @@ class _HomePageState extends State<HomePage> {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppTextContants.appBarTittle),
+        title: const Text(AppTextContants.appBarTitleHomePage),
         centerTitle: true,
+        elevation: AppSizeConstants.appBarElevationSize,
       ),
       body: Center(
         child: Column(
