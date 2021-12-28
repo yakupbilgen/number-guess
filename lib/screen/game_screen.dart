@@ -20,7 +20,30 @@ class _GameScreenState extends State<GameScreen> {
         elevation: AppSizeConstants.appBarElevationSize,
       ),
       body: Center(
-        child: Text('data'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text('data'),
+            const Text('data'),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  labelText: 'Guess?',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('data'),
+            ),
+          ],
+        ),
       ),
     );
   }
