@@ -39,7 +39,7 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, "/resultscreen"),
               child: const Text('data'),
             ),
           ],
