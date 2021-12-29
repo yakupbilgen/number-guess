@@ -17,15 +17,19 @@ class _ResultScreenState extends State<ResultScreen> {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          children: [
-            const Text('data'),
-            Image.asset('url'),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('data'),
-            )
-          ],
+        child: Container(
+          margin: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Text('Result'),
+              Image.asset('assets/images/smileee.png'),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('data'),
+              )
+            ],
+          ),
         ),
       ),
     );
