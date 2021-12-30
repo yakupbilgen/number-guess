@@ -24,7 +24,7 @@ class _ResultScreenState extends State<ResultScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text('Result'),
-              Image.asset('assets/images/smileee.png'),
+              Image.asset('assets/images/smile.png'),
               ElevatedButton(
                 onPressed: () {},
                 child: const Text('data'),
