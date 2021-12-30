@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:numberguess/constants/app_text_contansts.dart';
+
+import '../constants/app_text_contansts.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key}) : super(key: key);
