@@ -11,6 +11,9 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  final int remainigGuess = 5;
+  final int correctGuess = 0;
+  final int inCorrectGuess = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +25,33 @@ class _GameScreenState extends State<GameScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('data'),
-            const Text('data'),
+            Column(
+              children: [
+                const Text(AppTextContants.gameScreenRemainingGuess),
+                Text(remainigGuess.toString()),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    const Text(AppTextContants.gameScreenInCorrectGuess),
+                    Text(correctGuess.toString()),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Text(AppTextContants.gameScreenInCorrectGuess),
+                    Text(inCorrectGuess.toString()),
+                  ],
+                ),
+              ],
+            ),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 8.0, right: 8.0),
               child: TextField(
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
@@ -38,9 +63,19 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, "/resultscreen"),
-              child: const Text('data'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, "/resultscreen"),
+                  child: const Text('Result'),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.pushNamed(context, "/homepage"),
+                  child: const Text('New Game'),
+                ),
+              ],
             ),
           ],
         ),
