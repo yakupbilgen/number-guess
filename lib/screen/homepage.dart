@@ -43,12 +43,6 @@ class _HomePageState extends State<HomePage> {
               AppTextContants.guessRange,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
             ),
-            Slider(
-              max: 100.0,
-              value: 100,
-              divisions: 10,
-              onChanged: _changeGuessRange(100),
-            ),
             SizedBox(
               height: deviceSize.height * 0.1,
               width: deviceSize.width - 50,
