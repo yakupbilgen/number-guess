@@ -13,12 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   double guessRange = 0.0;
 
-  _changeGuessRange(double range) {
-    setState(() {
-      guessRange = range;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
