@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numberguess/constants/widgets/app_text_style.dart';
 
 import '../constants/app_size_constants.dart';
 import '../constants/app_text_contansts.dart';
@@ -14,6 +15,7 @@ class _GameScreenState extends State<GameScreen> {
   final int remainigGuess = 5;
   final int correctGuess = 0;
   final int inCorrectGuess = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,8 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             Column(
               children: [
-                const Text(AppTextContants.gameScreenRemainingGuess),
+                Text(AppTextContants.gameScreenRemainingGuess,
+                    style: myTextStyle(Colors.red)),
                 Text(remainigGuess.toString()),
               ],
             ),

@@ -33,10 +33,10 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: AppSizeConstants.defaultSizedBoxHeight,
             ),
-            const Text(
-              AppTextContants.guessRange,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
-            ),
+            // const Text(
+            //   AppTextContants.guessRange,
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+            // ),
             SizedBox(
               height: deviceSize.height * 0.1,
               width: deviceSize.width - 50,
