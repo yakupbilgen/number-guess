@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:numberguess/constants/widgets/app_text_style.dart';
 
@@ -14,6 +16,15 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final int remainigGuess = 5;
   final int correctGuess = 0;
+  late int myRandomNumber;
+  Random rnd = Random();
+
+  @override
+  void initState() {
+    super.initState();
+    myRandomNumber = rnd.nextInt(100);
+    print("Randommmmmmmmmmmmmm:" + myRandomNumber.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
