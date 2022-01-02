@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-TextStyle myTextStyle(Color _textColor) {
+TextStyle myTextStyle(double _fontSize, Color _textColor) {
   return TextStyle(
-    fontSize: 32,
+    fontSize: _fontSize,
     fontWeight: FontWeight.bold,
     color: _textColor,
   );

@@ -14,7 +14,6 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final int remainigGuess = 5;
   final int correctGuess = 0;
-  final int inCorrectGuess = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +30,25 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             Column(
               children: [
-                Text(AppTextContants.gameScreenRemainingGuess,
-                    style: myTextStyle(Colors.red)),
-                Text(remainigGuess.toString()),
+                Text(
+                  AppTextContants.gameScreenRemainingGuess,
+                  style: myTextStyle(32, Colors.red),
+                ),
+                Text(
+                  remainigGuess.toString(),
+                  style: myTextStyle(32, Colors.black),
+                ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                Column(
-                  children: [
-                    const Text(AppTextContants.gameScreenInCorrectGuess),
-                    Text(correctGuess.toString()),
-                  ],
+                Text(
+                  AppTextContants.gameScreenCorrectGuess,
+                  style: myTextStyle(24, Colors.red),
                 ),
-                Column(
-                  children: [
-                    const Text(AppTextContants.gameScreenInCorrectGuess),
-                    Text(inCorrectGuess.toString()),
-                  ],
+                Text(
+                  correctGuess.toString(),
+                  style: myTextStyle(24, Colors.black),
                 ),
               ],
             ),
@@ -69,14 +68,28 @@ class _GameScreenState extends State<GameScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, "/resultscreen"),
-                  child: const Text('Result'),
+                SizedBox(
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, "/resultscreen"),
+                    child: Text(
+                      AppTextContants.gameScreenGuessButton,
+                      style: myTextStyle(24, Colors.indigo),
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, "/homepage"),
-                  child: const Text('New Game'),
+                SizedBox(
+                  height: 75,
+                  width: 150,
+                  child: ElevatedButton(
+                    onPressed: _buildHintButtonMethod,
+                    child: Text(
+                      AppTextContants.gameScreenHintButton,
+                      style: myTextStyle(24, Colors.yellow),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -85,4 +98,6 @@ class _GameScreenState extends State<GameScreen> {
       ),
     );
   }
+
+  _buildHintButtonMethod() {}
 }
