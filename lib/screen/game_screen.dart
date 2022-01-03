@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:numberguess/constants/widgets/app_text_style.dart';
 
+import '../constants/widgets/app_text_style.dart';
 import '../constants/app_size_constants.dart';
 import '../constants/app_text_contansts.dart';
 
@@ -14,6 +14,8 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  TextEditingController myTextController = TextEditingController();
+
   final int remainigGuess = 5;
   final int correctGuess = 0;
   late int myRandomNumber;
@@ -23,7 +25,7 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     myRandomNumber = rnd.nextInt(100);
-    print("Randommmmmmmmmmmmmm:" + myRandomNumber.toString());
+    print("Generated random number:" + myRandomNumber.toString());
   }
 
   @override
@@ -63,13 +65,14 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
               child: TextField(
+                controller: myTextController,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  labelText: 'Guess?',
+                decoration: const InputDecoration(
+                  labelText: AppTextContants.gameScreenLabelText,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
@@ -110,5 +113,13 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
-  _buildHintButtonMethod() {}
+  _buildHintButtonMethod() {
+    if (myTextController != null) {
+      if (int.parse(myTextController.text) <= myRandomNumber) {
+        return "Tahmini yükseltmelisin";
+      } else {
+        return "Tahmini azaltmalısın";
+      }
+    }
+  }
 }
