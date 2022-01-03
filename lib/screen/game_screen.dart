@@ -24,8 +24,12 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
+    generetRandomNumber();
+  }
+
+  void generetRandomNumber() {
     myRandomNumber = rnd.nextInt(100);
-    print("Generated random number:" + myRandomNumber.toString());
+    debugPrint("Generated random number:" + myRandomNumber.toString());
   }
 
   @override
@@ -115,10 +119,12 @@ class _GameScreenState extends State<GameScreen> {
 
   _buildHintButtonMethod() {
     if (myTextController != null) {
-      if (int.parse(myTextController.text) <= myRandomNumber) {
-        return "Tahmini yükseltmelisin";
+      if (int.parse(myTextController.text) == myRandomNumber) {
+        debugPrint("Dogru tahmin");
       } else {
-        return "Tahmini azaltmalısın";
+        (int.parse(myTextController.text) < myRandomNumber)
+            ? debugPrint('Tahmini yükseltmelisin')
+            : debugPrint('Tahmini azaltmalisin');
       }
     }
   }
