@@ -17,7 +17,6 @@ class _GameScreenState extends State<GameScreen> {
   TextEditingController myTextController = TextEditingController();
 
   final int remainigGuess = 5;
-  final int correctGuess = 0;
   late int myRandomNumber;
   Random rnd = Random();
 
@@ -57,17 +56,9 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ],
             ),
-            Column(
-              children: [
-                Text(
-                  AppTextContants.gameScreenCorrectGuess,
-                  style: myTextStyle(24, Colors.red),
-                ),
-                Text(
-                  correctGuess.toString(),
-                  style: myTextStyle(24, Colors.black),
-                ),
-              ],
+            Text(
+              AppTextContants.gameScreenNumberOfGuesses,
+              style: myTextStyle(24, Colors.red),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0),
