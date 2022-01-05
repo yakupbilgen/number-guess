@@ -12,6 +12,8 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
+    final Object? gameScreenData = ModalRoute.of(context)?.settings.arguments;
+    String imageName = 'smile';
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppTextContants.appBarTitleResultScreen),
@@ -24,7 +26,7 @@ class _ResultScreenState extends State<ResultScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text('Result'),
-              Image.asset('assets/images/smile.png'),
+              Image.asset('assets/images/$imageName.png'),
               ElevatedButton(
                 onPressed: () {},
                 child: const Text('data'),

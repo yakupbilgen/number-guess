@@ -21,8 +21,8 @@ class _GameScreenState extends State<GameScreen> {
   String hintTextDescription = '';
   bool hintTextShow = false;
 
-  final int _totalCorrectGuess = 0;
-  final int _totalAnswerGuess = 0;
+  int _totalCorrectGuess = 0;
+  late String imageName;
 
   Random rnd = Random();
   late int myRandomNumber;
@@ -122,13 +122,17 @@ class _GameScreenState extends State<GameScreen> {
   _buildGuessButtonMethod() {
     if (myTextController.text != "") {
       if (int.parse(myTextController.text) == myRandomNumber) {
-        hintTextDescription = 'Correct guess.';
+        hintTextDescription = 'Correct guess. You have earned 5 more rights';
+        remainigGuess += 5;
+        _totalCorrectGuess++;
+        generetRandomNumber();
       } else {
         (int.parse(myTextController.text) < myRandomNumber)
             ? hintTextDescription = 'Raise the guess.'
             : hintTextDescription = 'Reduce guess.';
 
         remainigGuess--;
+        _remainingGuessZero();
       }
     } else {
       hintTextDescription = 'Answer is empty. Please entry answer!';
@@ -137,15 +141,13 @@ class _GameScreenState extends State<GameScreen> {
     debugPrint(hintTextDescription);
     hintTextShow = true;
     setState(() {});
-    _RemainingGuessZero();
   }
 
-  _RemainingGuessZero() {
-    if (remainigGuess == 0) {
-      Navigator.pushNamed(context, "resultscreen", arguments: <String, int>{
-        totalCorrectGuess = _totalCorrectGuess,
-        totalAnswerGuess = _totalAnswerGuess
-      });
+  _remainingGuessZero() {
+    if (remainigGuess <= 0) {
+      (_totalCorrectGuess >= 3) ? imageName = 'smile' : imageName = 'sad';
+      Navigator.pushNamed(context, 'resultscreen',
+          arguments: {_totalCorrectGuess, imageName});
     }
   }
 }
