@@ -4,10 +4,9 @@ class AppTextContants {
   static const guessRange = 'Guess Range';
 
   static const appBarTitleGameScreen = 'Number Guess';
-  static const gameScreenGuessButton = 'Guess?';
+  static const gameScreenGuessButton = 'Guess';
   static const gameScreenHintButton = 'Hint';
   static const gameScreenRemainingGuess = 'Remaining Guess';
-  static const gameScreenNumberOfGuesses = 'Number Of Guesses';
   static const gameScreenLabelText = 'Guess?';
 
   static const appBarTitleResultScreen = 'Result';

@@ -16,9 +16,13 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   TextEditingController myTextController = TextEditingController();
 
-  final int remainigGuess = 5;
-  late int myRandomNumber;
+  int remainigGuess = 5;
+  String hintText = "";
+  String hintTextDescription = '';
+  bool hintTextShow = false;
+
   Random rnd = Random();
+  late int myRandomNumber;
 
   @override
   void initState() {
@@ -27,7 +31,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void generetRandomNumber() {
-    myRandomNumber = rnd.nextInt(100);
+    myRandomNumber = rnd.nextInt(101);
     debugPrint("Generated random number:" + myRandomNumber.toString());
   }
 
@@ -39,7 +43,10 @@ class _GameScreenState extends State<GameScreen> {
         centerTitle: true,
         elevation: AppSizeConstants.appBarElevationSize,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(
+            left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
+            right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,56 +59,57 @@ class _GameScreenState extends State<GameScreen> {
                 ),
                 Text(
                   remainigGuess.toString(),
-                  style: myTextStyle(32, Colors.black),
-                ),
+                  style: myTextStyle(24, Colors.black),
+                )
               ],
             ),
-            Text(
-              AppTextContants.gameScreenNumberOfGuesses,
-              style: myTextStyle(24, Colors.red),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-              child: TextField(
-                controller: myTextController,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(
-                  labelText: AppTextContants.gameScreenLabelText,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
+            (hintTextShow)
+                ? Column(
+                    children: [
+                      Text(
+                        hintText,
+                        style: myTextStyle(32, Colors.red),
+                      ),
+                      Text(
+                        hintTextDescription,
+                        style: myTextStyle(24, Colors.black),
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
+            TextField(
+              controller: myTextController,
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                labelText: AppTextContants.gameScreenLabelText,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  height: 75,
-                  width: 150,
-                  child: ElevatedButton(
-                    onPressed: () =>
-                        Navigator.pushNamed(context, "/resultscreen"),
-                    child: Text(
-                      AppTextContants.gameScreenGuessButton,
-                      style: myTextStyle(24, Colors.indigo),
-                    ),
-                  ),
+            SizedBox(
+              height: 75,
+              width: 150,
+              child: ElevatedButton(
+                onPressed: _buildHintButtonMethod,
+                child: Text(
+                  AppTextContants.gameScreenGuessButton,
+                  style: myTextStyle(24, Colors.black),
                 ),
-                SizedBox(
-                  height: 75,
-                  width: 150,
-                  child: ElevatedButton(
-                    onPressed: _buildHintButtonMethod,
-                    child: Text(
-                      AppTextContants.gameScreenHintButton,
-                      style: myTextStyle(24, Colors.yellow),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
+            // SizedBox(
+            //   height: 75,
+            //   width: 150,
+            //   child: ElevatedButton(
+            //     onPressed: _buildHintButtonMethod,
+            //     child: Text(
+            //       AppTextContants.gameScreenHintButton,
+            //       style: myTextStyle(24, Colors.yellow),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -109,14 +117,22 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   _buildHintButtonMethod() {
-    if (myTextController != null) {
+    if (myTextController != null && myTextController.text != "") {
       if (int.parse(myTextController.text) == myRandomNumber) {
-        debugPrint("Dogru tahmin");
+        hintTextDescription = 'Correct guess.';
       } else {
         (int.parse(myTextController.text) < myRandomNumber)
-            ? debugPrint('Tahmini yükseltmelisin')
-            : debugPrint('Tahmini azaltmalisin');
+            ? hintTextDescription = 'Raise the guess.'
+            : hintTextDescription = 'Reduce guess.';
+
+        remainigGuess--;
       }
+    } else {
+      hintTextDescription = 'Answer is empty. Please entry answer!';
     }
+    hintText = 'Hint';
+    debugPrint(hintTextDescription);
+    hintTextShow = true;
+    setState(() {});
   }
 }
