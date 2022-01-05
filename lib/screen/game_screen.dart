@@ -21,6 +21,9 @@ class _GameScreenState extends State<GameScreen> {
   String hintTextDescription = '';
   bool hintTextShow = false;
 
+  final int _totalCorrectGuess = 0;
+  final int _totalAnswerGuess = 0;
+
   Random rnd = Random();
   late int myRandomNumber;
 
@@ -92,7 +95,7 @@ class _GameScreenState extends State<GameScreen> {
               height: 75,
               width: 150,
               child: ElevatedButton(
-                onPressed: _buildHintButtonMethod,
+                onPressed: _buildGuessButtonMethod,
                 child: Text(
                   AppTextContants.gameScreenGuessButton,
                   style: myTextStyle(24, Colors.black),
@@ -116,8 +119,8 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
-  _buildHintButtonMethod() {
-    if (myTextController != null && myTextController.text != "") {
+  _buildGuessButtonMethod() {
+    if (myTextController.text != "") {
       if (int.parse(myTextController.text) == myRandomNumber) {
         hintTextDescription = 'Correct guess.';
       } else {
@@ -134,5 +137,15 @@ class _GameScreenState extends State<GameScreen> {
     debugPrint(hintTextDescription);
     hintTextShow = true;
     setState(() {});
+    _RemainingGuessZero();
+  }
+
+  _RemainingGuessZero() {
+    if (remainigGuess == 0) {
+      Navigator.pushNamed(context, "resultscreen", arguments: <String, int>{
+        totalCorrectGuess = _totalCorrectGuess,
+        totalAnswerGuess = _totalAnswerGuess
+      });
+    }
   }
 }
