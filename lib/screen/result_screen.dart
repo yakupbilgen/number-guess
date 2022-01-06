@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 
 import '../constants/app_text_contansts.dart';
@@ -12,8 +14,8 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
-    final Object? gameScreenData = ModalRoute.of(context)?.settings.arguments;
-    String imageName = 'smile';
+    Object? gameScreenData = ModalRoute.of(context)?.settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppTextContants.appBarTitleResultScreen),
@@ -24,9 +26,11 @@ class _ResultScreenState extends State<ResultScreen> {
           margin: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Result'),
-              Image.asset('assets/images/$imageName.png'),
+              Text(
+                  'totalCorrectAnswer: \n${gameScreenData!['totalCorrectGuess']}'),
+              Image.asset('assets/images/${gameScreenData!['imageName']}.png'),
               ElevatedButton(
                 onPressed: () {},
                 child: const Text('data'),

@@ -21,7 +21,7 @@ class _GameScreenState extends State<GameScreen> {
   String hintTextDescription = '';
   bool hintTextShow = false;
 
-  int _totalCorrectGuess = 0;
+  int totalCorrectGuess = 0;
   late String imageName;
 
   Random rnd = Random();
@@ -102,17 +102,17 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: 75,
-            //   width: 150,
-            //   child: ElevatedButton(
-            //     onPressed: _buildHintButtonMethod,
-            //     child: Text(
-            //       AppTextContants.gameScreenHintButton,
-            //       style: myTextStyle(24, Colors.yellow),
-            //     ),
-            //   ),
-            // ),
+            SizedBox(
+              height: 75,
+              width: 150,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, "/resultscreen"),
+                child: Text(
+                  AppTextContants.gameScreenHintButton,
+                  style: myTextStyle(24, Colors.yellow),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -124,7 +124,7 @@ class _GameScreenState extends State<GameScreen> {
       if (int.parse(myTextController.text) == myRandomNumber) {
         hintTextDescription = 'Correct guess. You have earned 5 more rights';
         remainigGuess += 5;
-        _totalCorrectGuess++;
+        totalCorrectGuess++;
         generetRandomNumber();
       } else {
         (int.parse(myTextController.text) < myRandomNumber)
@@ -145,9 +145,12 @@ class _GameScreenState extends State<GameScreen> {
 
   _remainingGuessZero() {
     if (remainigGuess <= 0) {
-      (_totalCorrectGuess >= 3) ? imageName = 'smile' : imageName = 'sad';
-      Navigator.pushNamed(context, 'resultscreen',
-          arguments: {_totalCorrectGuess, imageName});
+      (totalCorrectGuess >= 3) ? imageName = 'smile' : imageName = 'sad';
+      Navigator.pushNamed(context, '/resultscreen',
+          arguments: <dynamic, dynamic>{
+            "totalCorrectGuess": totalCorrectGuess,
+            "imageName": imageName,
+          });
     }
   }
 }
