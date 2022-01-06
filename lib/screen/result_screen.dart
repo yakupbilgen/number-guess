@@ -14,7 +14,7 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
-    Object? gameScreenData = ModalRoute.of(context)?.settings.arguments;
+    Map? gameScreenData = ModalRoute.of(context)?.settings.arguments as Map;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,8 +29,9 @@ class _ResultScreenState extends State<ResultScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                  'totalCorrectAnswer: \n${gameScreenData!['totalCorrectGuess']}'),
-              Image.asset('assets/images/${gameScreenData!['imageName']}.png'),
+                  'totalCorrectAnswer: \n${gameScreenData['totalCorrectGuess'] ?? "default"}'),
+              if (gameScreenData['imageName'] != null)
+                Image.asset('assets/images/${gameScreenData['imageName']}.png'),
               ElevatedButton(
                 onPressed: () {},
                 child: const Text('data'),
