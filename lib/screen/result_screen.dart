@@ -1,5 +1,3 @@
-import 'dart:core';
-
 import 'package:flutter/material.dart';
 
 import '../constants/app_text_contansts.dart';
@@ -15,6 +13,9 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     Map? gameScreenData = ModalRoute.of(context)?.settings.arguments as Map;
+    debugPrint('Result screen:\n');
+    debugPrint(gameScreenData['totalCorrectGuess'].toString());
+    debugPrint(gameScreenData['imageName']);
 
     return Scaffold(
       appBar: AppBar(

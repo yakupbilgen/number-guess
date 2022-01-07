@@ -102,17 +102,6 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 75,
-              width: 150,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, "/resultscreen"),
-                child: Text(
-                  AppTextContants.gameScreenHintButton,
-                  style: myTextStyle(24, Colors.yellow),
-                ),
-              ),
-            ),
           ],
         ),
       ),
@@ -146,6 +135,10 @@ class _GameScreenState extends State<GameScreen> {
   _remainingGuessZero() {
     if (remainigGuess <= 0) {
       (totalCorrectGuess >= 3) ? imageName = 'smile' : imageName = 'sad';
+
+      debugPrint(totalCorrectGuess.toString());
+      debugPrint(imageName);
+
       Navigator.pushNamed(context, '/resultscreen',
           arguments: <dynamic, dynamic>{
             "totalCorrectGuess": totalCorrectGuess,
