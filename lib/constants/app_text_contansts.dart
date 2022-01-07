@@ -11,4 +11,5 @@ class AppTextContants {
 
   static const appBarTitleResultScreen = 'Result';
   static const resultScreenTryAgainButton = 'Try Again';
+  static const totalCorrectAnswer = 'Total Correct Answer';
 }
