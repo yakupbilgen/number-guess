@@ -8,7 +8,6 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: HomePage(),
       initialRoute: "/homepage",
       routes: {
         "/homepage": (context) => const HomePage(),

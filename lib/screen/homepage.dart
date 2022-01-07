@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:numberguess/constants/widgets/app_text_style.dart';
 
 import '../constants/app_size_constants.dart';
 import '../constants/app_text_contansts.dart';
+import '../constants/widgets/app_text_style.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
