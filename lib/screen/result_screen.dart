@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_text_contansts.dart';
+import '../constants/widgets/app_text_style.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key}) : super(key: key);
@@ -34,8 +35,11 @@ class _ResultScreenState extends State<ResultScreen> {
               if (gameScreenData['imageName'] != null)
                 Image.asset('assets/images/${gameScreenData['imageName']}.png'),
               ElevatedButton(
-                onPressed: () {},
-                child: const Text('data'),
+                onPressed: () => Navigator.pushNamed(context, "/homepage"),
+                child: Text(
+                  AppTextContants.resultScreenTryAgainButton,
+                  style: myTextStyle(24, Colors.black),
+                ),
               )
             ],
           ),

@@ -40,6 +40,8 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size deviceSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppTextContants.appBarTitleGameScreen),
@@ -92,8 +94,8 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
             SizedBox(
-              height: 75,
-              width: 150,
+              height: deviceSize.height * 0.1,
+              width: deviceSize.width - 50,
               child: ElevatedButton(
                 onPressed: _buildGuessButtonMethod,
                 child: Text(

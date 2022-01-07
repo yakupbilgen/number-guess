@@ -22,7 +22,10 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         elevation: AppSizeConstants.appBarElevationSize,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(
+            left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
+            right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -33,10 +36,6 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: AppSizeConstants.defaultSizedBoxHeight,
             ),
-            // const Text(
-            //   AppTextContants.guessRange,
-            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
-            // ),
             SizedBox(
               height: deviceSize.height * 0.1,
               width: deviceSize.width - 50,
