@@ -43,68 +43,65 @@ class _GameScreenState extends State<GameScreen> {
     Size deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppTextContants.appBarTitleGameScreen),
-        centerTitle: true,
-        elevation: AppSizeConstants.appBarElevationSize,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-            left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
-            right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                Text(
-                  AppTextContants.gameScreenRemainingGuess,
-                  style: myTextStyle(32, Colors.red),
-                ),
-                Text(
-                  remainigGuess.toString(),
-                  style: myTextStyle(24, Colors.black),
-                )
-              ],
-            ),
-            (hintTextShow)
-                ? Column(
-                    children: [
-                      Text(
-                        hintText,
-                        style: myTextStyle(32, Colors.red),
-                      ),
-                      Text(
-                        hintTextDescription,
-                        style: myTextStyle(24, Colors.black),
-                      ),
-                    ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(
+              left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
+              right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    AppTextContants.gameScreenRemainingGuess,
+                    style: myTextStyle(32, Colors.red),
+                  ),
+                  Text(
+                    remainigGuess.toString(),
+                    style: myTextStyle(24, Colors.black),
                   )
-                : const SizedBox(),
-            TextField(
-              controller: myTextController,
-              keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                labelText: AppTextContants.gameScreenLabelText,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ],
+              ),
+              (hintTextShow)
+                  ? Column(
+                      children: [
+                        Text(
+                          hintText,
+                          style: myTextStyle(32, Colors.red),
+                        ),
+                        Text(
+                          hintTextDescription,
+                          style: myTextStyle(24, Colors.black),
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
+              TextField(
+                controller: myTextController,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                decoration: const InputDecoration(
+                  labelText: AppTextContants.gameScreenLabelText,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: deviceSize.height * 0.1,
-              width: deviceSize.width - 50,
-              child: ElevatedButton(
-                onPressed: _buildGuessButtonMethod,
-                child: Text(
-                  AppTextContants.gameScreenGuessButton,
-                  style: myTextStyle(24, Colors.black),
+              SizedBox(
+                height: deviceSize.height * 0.1,
+                width: deviceSize.width - 50,
+                child: ElevatedButton(
+                  onPressed: _buildGuessButtonMethod,
+                  child: Text(
+                    AppTextContants.gameScreenGuessButton,
+                    style: myTextStyle(24, Colors.black),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

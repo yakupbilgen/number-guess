@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numberguess/constants/widgets/app_text_style.dart';
 
 import '../constants/app_size_constants.dart';
 import '../constants/app_text_contansts.dart';
@@ -17,39 +18,37 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppTextContants.appBarTitleHomePage),
-        centerTitle: true,
-        elevation: AppSizeConstants.appBarElevationSize,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-            left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
-            right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              height: deviceSize.height * 0.4,
-              child: Image.asset('assets/images/dice.png'),
-            ),
-            const SizedBox(
-              height: AppSizeConstants.defaultSizedBoxHeight,
-            ),
-            SizedBox(
-              height: deviceSize.height * 0.1,
-              width: deviceSize.width - 50,
-              child: Expanded(
-                child: ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, "/gamescreen"),
-                  child: const Text(
-                    AppTextContants.startButton,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(
+              left: AppSizeConstants.defaultSizedBoxLeftAndRightSpace,
+              right: AppSizeConstants.defaultSizedBoxLeftAndRightSpace),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                height: deviceSize.height * 0.4,
+                child: Image.asset('assets/images/dice.png'),
+              ),
+              const SizedBox(
+                height: AppSizeConstants.defaultSizedBoxHeight,
+              ),
+              SizedBox(
+                height: deviceSize.height * 0.1,
+                width: deviceSize.width - 50,
+                child: Expanded(
+                  child: ElevatedButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, "/gamescreen"),
+                    child: Text(
+                      AppTextContants.startButton,
+                      style: myTextStyle(32, Colors.black),
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
